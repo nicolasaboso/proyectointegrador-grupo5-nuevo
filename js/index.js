@@ -1,10 +1,9 @@
 let apiKey = 'bfaef3fe6aa228ec1ff3d56dae5a9aa8';
 
 function crearItem(item, tipo) {
-  let li = document.createElement('li');
-
   let titulo;
   let fecha;
+
   if (tipo === 'movie') {
     titulo = item.title;
     fecha = item.release_date;
@@ -27,13 +26,22 @@ function crearItem(item, tipo) {
     link = 'detail-serie.html?id=' + item.id;
   }
 
-  li.innerHTML = 
-    '<a href="' + link + '">' +
-      '<img src="' + imagen + '" alt="' + titulo + '">' +
-      '<p>' + titulo + '<br>' + (fecha ? fecha : 'Fecha desconocida') + '</p>' +
-    '</a>';
+  let fechaTexto;
+  if (fecha) {
+    fechaTexto = fecha;
+  } else {
+    fechaTexto = 'Fecha desconocida';
+  }
 
-  return li;
+  let liHTML = 
+    '<li>' +
+      '<a href="' + link + '">' +
+        '<img src="' + imagen + '" alt="' + titulo + '">' +
+        '<p>' + titulo + '<br>' + fechaTexto + '</p>' +
+      '</a>' +
+    '</li>';
+
+  return liHTML;
 }
 
 function cargarDatos(url, idContenedor, tipo) {
@@ -42,17 +50,21 @@ function cargarDatos(url, idContenedor, tipo) {
       return response.json();
     })
     .then(function(data) {
-      let contenedor = document.getElementById(idContenedor);
+      let contenedor = document.querySelector('#' + idContenedor);
       contenedor.innerHTML = '';
+
       let resultados = [];
       for (let i = 0; i < 5; i++) {
         resultados.push(data.results[i]);
       }
 
       for (let j = 0; j < resultados.length; j++) {
-        let li = crearItem(resultados[j], tipo);
-        contenedor.appendChild(li);
+        let liHTML = crearItem(resultados[j], tipo);
+        contenedor.innerHTML += liHTML;
       }
+    })
+    .catch(function(error) {
+      console.log('Error: ' + error);
     });
 }
 

@@ -1,15 +1,15 @@
 let apiKey = 'bfaef3fe6aa228ec1ff3d56dae5a9aa8';
 
-let queryString = window.location.search;
+let queryString = location.search;
 let queryStringObj = new URLSearchParams(queryString);
 let terminoBuscado = queryStringObj.get('user');
 
-let tituloBusqueda = document.getElementById('titulo-busqueda');
-let resultados = document.getElementById('resultados');
-let spinner = document.getElementById('spinner');
-let sinResultados = document.getElementById('sin-resultados');
+let tituloBusqueda = document.querySelector('#titulo-busqueda');
+let resultados = document.querySelector('#resultados');
+let spinner = document.querySelector('#spinner');
+let sinResultados = document.querySelector('#sin-resultados');
 
-tituloBusqueda.textContent = 'Resultados de búsqueda para: "' + terminoBuscado + '"';
+tituloBusqueda.innerText = 'Resultados de búsqueda para: "' + terminoBuscado + '"';
 
 function buscar(termino) {
   spinner.style.display = 'block';
@@ -28,10 +28,15 @@ function buscar(termino) {
         })
         .then(function(series) {
           spinner.style.display = 'none';
-
           resultados.innerHTML = '';
 
-          let datos = peliculas.results.concat(series.results);
+          let datos = [];
+          for (let i = 0; i < peliculas.results.length; i++) {
+            datos.push(peliculas.results[i]);
+          }
+          for (let i = 0; i < series.results.length; i++) {
+            datos.push(series.results[i]);
+          }
 
           if (datos.length === 0) {
             sinResultados.style.display = 'block';
@@ -41,30 +46,49 @@ function buscar(termino) {
             for (let i = 0; i < datos.length; i++) {
               let item = datos[i];
 
-              let li = document.createElement('li');
-              let a = document.createElement('a');
-              let img = document.createElement('img');
-              let h3 = document.createElement('h3');
-
-              if (item.title) {
-                a.href = 'detail-movie.html?id=' + item.id;
-                img.alt = item.title;
-                h3.textContent = item.title + (item.release_date ? ' (' + item.release_date.slice(0, 4) + ')' : '');
+              let imagen;
+              if (item.poster_path) {
+                imagen = 'https://image.tmdb.org/t/p/w200' + item.poster_path;
               } else {
-                a.href = 'detail-serie.html?id=' + item.id;
-                img.alt = item.name;
-                h3.textContent = item.name + (item.first_air_date ? ' (' + item.first_air_date.slice(0, 4) + ')' : '');
+                imagen = './img/placeholder.jpg';
               }
 
-              img.src = item.poster_path ? 'https://image.tmdb.org/t/p/w200' + item.poster_path : './img/placeholder.jpg';
+              let nombre;
+              let fecha = '';
+              let link;
 
-              a.appendChild(img);
-              a.appendChild(h3);
-              li.appendChild(a);
-              resultados.appendChild(li);
+              if (item.title) {
+                nombre = item.title;
+                if (item.release_date) {
+                  fecha = ' (' + item.release_date.substring(0, 4) + ')';
+                }
+                link = 'detail-movie.html?id=' + item.id;
+              } else {
+                nombre = item.name;
+                if (item.first_air_date) {
+                  fecha = ' (' + item.first_air_date.substring(0, 4) + ')';
+                }
+                link = 'detail-serie.html?id=' + item.id;
+              }
+
+              resultados.innerHTML += 
+                '<li>' +
+                  '<a href="' + link + '">' +
+                    '<img src="' + imagen + '" alt="' + nombre + '">' +
+                    '<h3>' + nombre + fecha + '</h3>' +
+                  '</a>' +
+                '</li>';
             }
           }
+        })
+        .catch(function(error) {
+          console.log('Error al buscar series: ' + error);
+          spinner.style.display = 'none';
         });
+    })
+    .catch(function(error) {
+      console.log('Error al buscar películas: ' + error);
+      spinner.style.display = 'none';
     });
 }
 

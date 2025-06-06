@@ -1,11 +1,11 @@
 let apiKey = 'bfaef3fe6aa228ec1ff3d56dae5a9aa8';
 
-let queryString = window.location.search;
+let queryString = location.search;
 let queryStringObj = new URLSearchParams(queryString);
 let generoId = queryStringObj.get('id');
 
-let tituloGenero = document.getElementById('titulo-genero');
-let lista = document.getElementById('lista-series');
+let tituloGenero = document.querySelector('#titulo-genero');
+let lista = document.querySelector('#lista-series');
 
 function cargarSeriesPorGenero(idGenero) {
   let url = 'https://api.themoviedb.org/3/discover/tv?api_key=' + apiKey + '&with_genres=' + idGenero + '&language=es-ES';
@@ -19,27 +19,25 @@ function cargarSeriesPorGenero(idGenero) {
 
       for (let i = 0; i < data.results.length; i++) {
         let serie = data.results[i];
-
-        let li = document.createElement('li');
-        let a = document.createElement('a');
-        let img = document.createElement('img');
-        let p = document.createElement('p');
+        let poster;
 
         if (serie.poster_path) {
-          img.src = 'https://image.tmdb.org/t/p/w200' + serie.poster_path;
+          poster = 'https://image.tmdb.org/t/p/w200' + serie.poster_path;
         } else {
-          img.src = './img/placeholder.jpg';
+          poster = './img/placeholder.jpg';
         }
 
-        a.href = 'detail-serie.html?id=' + serie.id;
-        img.alt = serie.name;
-        p.textContent = serie.name;
-
-        a.appendChild(img);
-        a.appendChild(p);
-        li.appendChild(a);
-        lista.appendChild(li);
+        lista.innerHTML += 
+          '<li>' +
+            '<a href="detail-serie.html?id=' + serie.id + '">' +
+              '<img src="' + poster + '" alt="' + serie.name + '">' +
+              '<p>' + serie.name + '</p>' +
+            '</a>' +
+          '</li>';
       }
+    })
+    .catch(function(error) {
+      console.log('Error: ' + error);
     });
 }
 
@@ -52,10 +50,13 @@ function cargarNombreGenero(idGenero) {
     })
     .then(function(data) {
       for (let i = 0; i < data.genres.length; i++) {
-        if (data.genres[i].id == idGenero) {
+        if ('' + data.genres[i].id === generoId) {
           tituloGenero.innerText = data.genres[i].name;
         }
       }
+    })
+    .catch(function(error) {
+      console.log('Error: ' + error);
     });
 }
 
