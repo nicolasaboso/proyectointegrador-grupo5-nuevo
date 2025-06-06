@@ -33,21 +33,17 @@ function cargarGeneros() {
       for (let i = 0; i < data.genres.length; i++) {
         let genero = data.genres[i];
 
-        let li = document.createElement('li');
-        let a = document.createElement('a');
-        let h3 = document.createElement('h3');
+       let href =esMoviesPage
+        ? 'detail-movie-genre.html?id=' + genero.id
+  : 'detail-serie-genre.html?id=' + genero.id;
 
-        if (esMoviesPage) {
-          a.href = 'detail-movie-genre.html?id=' + genero.id;
-        } else if (esSeriesPage) {
-          a.href = 'detail-serie-genre.html?id=' + genero.id;
-        }
-
-        h3.innerText = genero.name;
-
-        a.appendChild(h3);
-        li.appendChild(a);
-        contenedor.appendChild(li);
+contenedor.innerHTML += `
+  <li>
+    <a href="${href}">
+      <h3>${genero.name}</h3>
+    </a>
+  </li>
+`;
       }
     });
 }
@@ -71,32 +67,25 @@ function cargarContenidoPorGenero(idGenero) {
 
       for (let i = 0; i < data.results.length; i++) {
         let item = data.results[i];
+        let nombre = esDetailMovieGenrePage ? item.title : item.name;
 
-        let li = document.createElement('li');
-        let a = document.createElement('a');
-        let img = document.createElement('img');
-        let p = document.createElement('p');
+        let href = esDetailMovieGenrePage
+  ? 'detail-movie.html?id=' + item.id
+  : 'detail-serie.html?id=' + item.id;
 
-        if (item.poster_path) {
-          img.src = 'https://image.tmdb.org/t/p/w200' + item.poster_path;
-        } else {
-          img.src = './img/placeholder.jpg';
-        }
+let imagen = item.poster_path
+  ? 'https://image.tmdb.org/t/p/w200' + item.poster_path
+  : './img/placeholder.jpg';
 
-        if (esDetailMovieGenrePage) {
-          a.href = 'detail-movie.html?id=' + item.id;
-          img.alt = item.title;
-          p.textContent = item.title;
-        } else if (esDetailSerieGenrePage) {
-          a.href = 'detail-serie.html?id=' + item.id;
-          img.alt = item.name;
-          p.textContent = item.name;
-        }
+lista.innerHTML += `
+  <li>
+    <a href="${href}">
+      <img src="${imagen}" alt="${nombre}">
+      <p>${nombre}</p>
+    </a>
+  </li>
+`;
 
-        a.appendChild(img);
-        a.appendChild(p);
-        li.appendChild(a);
-        lista.appendChild(li);
       }
     });
 }

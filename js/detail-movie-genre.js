@@ -20,25 +20,18 @@ function cargarPeliculasPorGenero(idGenero) {
       for (let i = 0; i < data.results.length; i++) {
         let pelicula = data.results[i];
 
-        let li = document.createElement('li');
-        let a = document.createElement('a');
-        let img = document.createElement('img');
-        let p = document.createElement('p');
+        let poster = pelicula.poster_path
+          ? 'https://image.tmdb.org/t/p/w200' + pelicula.poster_path
+          : './img/placeholder.jpg';
 
-        if (pelicula.poster_path) {
-          img.src = 'https://image.tmdb.org/t/p/w200' + pelicula.poster_path;
-        } else {
-          img.src = './img/placeholder.jpg';
-        }
-
-        a.href = 'detail-movie.html?id=' + pelicula.id;
-        img.alt = pelicula.title;
-        p.textContent = pelicula.title;
-
-        a.appendChild(img);
-        a.appendChild(p);
-        li.appendChild(a);
-        lista.appendChild(li);
+        lista.innerHTML += `
+          <li>
+            <a href="detail-movie.html?id=${pelicula.id}">
+              <img src="${poster}" alt="${pelicula.title}">
+              <p>${pelicula.title}</p>
+            </a>
+          </li>
+        `;
       }
     });
 }
