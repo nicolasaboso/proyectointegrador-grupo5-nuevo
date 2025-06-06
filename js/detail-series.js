@@ -46,7 +46,7 @@ function obtenerDetalleSerie(id, idioma) {
       if (data.genres && data.genres.length > 0) {
         let generosHTML = '';
         for (let i = 0; i < data.genres.length; i++) {
-          generosHTML += '<a href="detail-genres.html?id=' + data.genres[i].id + '">' + data.genres[i].name + '</a>';
+          generosHTML += '<a href="detail-serie-genre.html?id=' + data.genres[i].id + '">' + data.genres[i].name + '</a>';
           if (i < data.genres.length - 1) {
             generosHTML += ', ';
           }
