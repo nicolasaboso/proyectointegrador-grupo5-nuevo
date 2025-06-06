@@ -1,0 +1,723 @@
+/*  INDEX  */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #141414;
+    color: #e5e5e5;
+  }
+  
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background-color: #1b1b1b;
+    border-bottom: 2px solid #e50914;
+    width: 100%;
+  }
+  
+  .header-left img {
+    width: 220px;
+  }
+  
+  .header-center ul {
+    list-style: none;
+    display: flex;
+  }
+  
+  .header-center li {
+    margin: 0 25px 0 0;
+  }
+  
+  .header-center a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 5px 10px;
+  }
+  
+  .buscador {
+    display: flex;
+    align-items: center;
+    background-color: #1c1c1c;
+    border: 1px solid #333;
+    padding: 5px 15px;
+  }
+  
+  .buscador input {
+    background-color: #1c1c1c;
+    border-radius: 5px;
+    color: white;
+    padding: 8px;
+  }
+  
+  .buscador button {
+    background-color: #1c1c1c;
+    border: none;
+    color: #e50914;
+    font-size: 14px;
+  }
+  
+  main {
+    padding: 30px 40px;
+  }
+  
+  section {
+    margin: 0 0 40px 0;
+  }
+  
+  /* --- GALERIA --- */
+  .galeria {
+    display: flex;
+    flex-wrap: wrap; /* 👈 Esto hace que bajen de línea */
+    padding: 20px;
+    justify-content: center; /* 👈 Centrado */
+  }
+  
+  .galeria li {
+    width: 200px;
+    margin: 10px;
+    background-color: #1f1f1f;
+    text-align: center;
+    list-style: none;
+  }
+  
+  .galeria img {
+    width: 100%;
+    height: 300px;
+  }
+  
+  .galeria p {
+    font-size: 14px;
+    color: #ccc;
+    margin: 10px 0 0 0;
+  }
+  
+  section h2 {
+    color: #e50914;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 26px;
+    margin: 0 0 10px 0;
+    padding: 0 0 0 10px;
+  }
+  
+  /*  ESTILOS LOGIN Y REGISTER */
+  .button {
+    background-color: #e50914;
+    color: #ccc;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 16px;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .iiii {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #141414;
+    margin: 50px;
+    height: 50vh;
+    width: 45vw;
+    flex-wrap: wrap;
+    padding: 50px;
+    margin-top: 20px;
+    margin-bottom: 18px;
+  }
+  
+  body.login-page {
+    background-color: #141414;
+    color: #e5e5e5;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  body.login-page .logo-minimal {
+    text-align: center;
+  }
+  
+  body.login-page .logo-minimal img {
+    width: 220px;
+  }
+  
+  body.login-page .formulario {
+    background-color: #1f1f1f;
+    padding: 30px;
+    width: 500px;
+    margin: 0 auto;
+  }
+  
+  body.login-page .formulario h2 {
+    text-align: center;
+    color: #e50914;
+    margin: 0 0 25px 0;
+    font-size: 28px;
+  }
+  
+  body.login-page .formulario label {
+    display: block;
+    font-size: 14px;
+    color: #ccc;
+    margin: 0 0 5px 0;
+  }
+  
+  .email-input, .password-input {
+    padding: 10px;
+    margin: 0 0 15px 0;
+    border: 1px solid #444;
+    background-color: #2a2a2a;
+    color: white;
+    width: 100%;
+    display: block;
+  }
+  
+  body.login-page form input {
+    margin: 0 8px 0 0;
+  }
+  
+  body.login-page form .checkbox-container {
+    font-size: 14px;
+    color: #ccc;
+    margin: 0 0 20px 0;
+    display: flex;
+    margin-top: 30px;
+  }
+  
+  body.login-page form a {
+    display: block;
+    text-align: center;
+    color: #1e90ff;
+    text-decoration: none;
+    font-size: 14px;
+    margin: 15px 0 0 0;
+  }
+  
+  /*  ESTILOS DETAIL MOVIE */
+  .detalle-pelicula {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px;
+  }
+  
+  .detalle-img img {
+    width: 360px;
+  }
+  
+  .detalle-info {
+    max-width: 600px;
+    padding: 0 0 0 40px;
+  }
+  
+  .detalle-info h1 {
+    font-size: 32px;
+    color: white;
+    margin: 0 0 10px 0;
+  }
+  
+  .detalle-info h2 {
+    font-size: 22px;
+    color: #ccc;
+    margin: 0 0 15px 0;
+  }
+  
+  .meta p {
+    margin: 6px 0;
+    font-size: 14px;
+    color: #999;
+  }
+  
+  .descripcion {
+    font-style: italic;
+    margin: 20px 0;
+    color: #ddd;
+  }
+  
+  .detalle-info p {
+    font-size: 15px;
+    margin: 0 0 10px 0;
+  }
+  
+  /* ESTILOS MOVIESGENRES */
+  .moviesgenre {
+    text-align: center;
+  }
+  
+  .moviesgenre ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .moviesgenre li {
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+    padding: 10px;
+    margin: 0 0 12px 0;
+    width: 300px;
+  }
+  
+  .moviesgenre a {
+    color: #e5e5e5;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  /* ESTILOS SERIESGENRES */
+  .bodyfooteronly {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
+  
+  .seriesgenre {
+    text-align: center;
+  }
+  
+  .seriesgenre ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .seriesgenre li {
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+    padding: 10px;
+    margin: 0 0 12px 0;
+    width: 300px;
+  }
+  
+  .seriesgenre a {
+    color: #e5e5e5;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  /*  RESULTADOS BUSQUEDA */
+  body.pagina-busqueda .galeria {
+    display: flex;
+    flex-wrap: wrap;  /* 👈 Hace que salten de línea */
+    justify-content: center;  /* 👈 Centrado */
+    padding: 20px;
+  }
+  
+  body.pagina-busqueda .galeria li {
+    width: 200px;
+    margin: 10px;
+    background-color: #1f1f1f;
+    padding: 10px;
+    text-align: center;
+    list-style: none;
+  }
+  
+  body.pagina-busqueda .galeria img {
+    width: 100%;
+    height: 300px;
+  }
+  
+  body.pagina-busqueda .galeria h3 {
+    color: white;
+    font-size: 16px;
+    margin: 10px 0 0 0;
+  }
+  
+  body.pagina-busqueda .galeria p {
+    color: #ccc;
+    font-size: 14px;
+    margin: 10px 0 0 0;
+  }
+  
+  body.pagina-busqueda .galeria a {
+    color: white;
+    text-decoration: none;
+    display: block;
+  }
+  
+  
+  footer {
+    margin-top: 70px;
+    display: flex;
+    justify-content: start;
+    width: 100%;
+  }
+  
+  @media screen and (max-width: 768px) {
+    header {
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 10px 10px 10px; 
+    }
+  
+    .header-center ul {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .header-center li {
+      margin: 10px 0px 10px 0px;
+    }
+  
+    .buscador {
+      margin: 15px 0px 0px 0px;
+    }
+  
+    .buscador {
+      width: 100%;
+      justify-content: center;
+    }
+  
+    .formulario{
+      width: 100%;
+      justify-content: center;
+    }
+  
+    main {
+      padding: 20px 20px 20px 20px;
+    }
+  
+    .galeria {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .galeria li {
+      width: 100%;
+      max-width: 300px;
+      margin: 0px 0px 20px 0px;
+    }
+  
+    .galeria img {
+      height: auto;
+    }
+  
+    section h2 {
+      text-align: center;
+      font-size: 20px;
+      margin: 0px 0px 10px 0px;
+    }
+  
+  /*  RESPONSIVE DETALLE PELICULA  */
+  
+  
+    .detalle-pelicula {
+      flex-direction: column;
+      padding: 20px;
+    }
+  
+    .detalle-img img {
+      width: 100%;
+    }
+  
+    .detalle-info {
+      padding: 20px;
+    }
+  
+    .detalle-info h1 {
+      font-size: 24px;
+      margin: 0 0 10px 0;
+    }
+  
+    .detalle-info h2 {
+      font-size: 18px;
+      margin: 0 0 10px 0;
+    }
+  
+    .meta p {
+      font-size: 12px;
+      margin: 5px 0 5px 0;
+    }
+  
+    .descripcion {
+      font-size: 14px;
+      margin: 10px 0 10px 0;
+    }
+  
+    .detalle-info p {
+      font-size: 14px;
+      margin: 5px 0 5px 0;
+    }
+  
+  /*  RESPONSIVE BACK TO THE FUTURE  */
+  
+  
+    .detalle-pelicula {
+      flex-direction: column;
+      padding: 20px;
+    }
+  
+    .detalle-img img {
+      width: 100%;
+    }
+  
+    .detalle-info {
+      padding: 20px;
+    }
+  
+    .detalle-info h1 {
+      font-size: 24px;
+      margin: 0 0 10px 0;
+    }
+  
+    .detalle-info h2 {
+      font-size: 18px;
+      margin: 0 0 10px 0;
+    }
+  
+    .meta p {
+      font-size: 12px;
+      margin: 5px 0 5px 0;
+    }
+  
+    .descripcion {
+      font-size: 14px;
+      margin: 10px 0 10px 0;
+    }
+  
+    .detalle-info p {
+      font-size: 14px;
+      margin: 5px 0 5px 0;
+    }
+  
+  /* RESPONSIVE DETAIL GENRES  */
+  
+    .galeria {
+      display: flex;
+      padding: 20px;
+    }
+  
+    .galeria li {
+      width: 200px;
+      margin: 0 20px 0 0;
+      background-color: #1f1f1f;
+      text-align: center;
+    }
+  
+    .galeria img {
+      width: 100%;
+      height: 300px;
+    }
+  
+    .galeria p {
+      font-size: 14px;
+      color: #ccc;
+      margin: 10px 0 0 0;
+    }
+  
+    main h1 {
+      font-size: 24px;
+      color: #e50914;
+      margin: 20px;
+    }
+  
+  /*  RESPONSIVE LOGIN  */
+  
+    .logo-minimal img {
+      width: 180px;
+    }
+  
+    form {
+      width: 90%;
+      padding: 20px;
+    }
+  
+    form h2 {
+      font-size: 24px;
+    }
+  
+    .email-input {
+      width: 100%;
+      padding: 10px;
+      margin: 0 0 15px 0;
+    }
+  
+    .password-input {
+      width: 100%;
+      padding: 10px;
+      margin: 0 0 15px 0;
+    }
+  
+    .checkbox-container {
+      font-size: 14px;
+      margin: 0 0 20px 0;
+    }
+  
+    .button {
+      padding: 10px;
+      width: 100%;
+      font-size: 16px;
+    }
+  
+    form a {
+      font-size: 14px;
+    }
+  
+      .moviesgenre ul {
+        padding: 0;
+      }
+    
+      .moviesgenre li {
+        width: 90%;
+        margin: 10px;
+        padding: 10px;
+      }
+    
+      .moviesgenre h3 {
+        font-size: 16px;
+      }
+    
+      .header-left img {
+        width: 160px;
+      }
+    
+      .header-center ul {
+        display: block;
+        padding: 0;
+      }
+    
+      .header-center li {
+        margin: 10px;
+      }
+    
+      .buscador {
+        display: block;
+        padding: 10px;
+      }
+    
+      .input-busqueda {
+        width: 100%;
+        padding: 8px;
+        margin: 10px;
+      }
+    
+      .buscador button {
+        width: 100%;
+        padding: 8px;
+        margin: 10px;
+      }
+  
+    /*register*/
+        .header-left img {
+          width: 160px;
+        }
+      
+        .header-center ul {
+          flex-direction: column;
+          align-items: center;
+        }
+      
+        .header-center li {
+          margin: 5px 0;
+        }
+      
+        .buscador {
+          display: flex;
+          align-items: center;
+          background-color: #1c1c1c;
+          border: 1px solid #333;
+          padding: 5px 15px;
+        }
+      
+        .buscador {
+          display: flex;
+          flex-direction: column;
+        }
+      
+        .buscador input {
+          margin-bottom: 10px;
+          width: 100%;
+        }
+      
+        .buscador button {
+          width: 100%;
+        }
+      
+        .logo-minimal img {
+          width: 180px;
+        }
+      
+        form {
+          width: 90%;
+        }
+  
+  
+  
+  
+  
+          .header-left img {
+            width: 160px;
+          }
+        
+          .header-center ul {
+            flex-direction: column;
+            justify-content: center;
+          }
+        
+          .header-center li {
+            margin: 5px 0;
+          }
+        
+          .header-right {
+            display: flex;
+            justify-content: center;
+          }
+        
+          .buscador {
+            display: flex;
+            flex-direction: column;
+          }
+        
+          .buscador input {
+            width: 100%;
+            margin-bottom: 10px;
+          }
+        
+          .buscador button {
+            width: 100%;
+          }
+        
+          .galeria {
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+          }
+        
+          .galeria li {
+            width: 90%;
+            margin-bottom: 20px;
+          }
+        
+          .galeria img {
+            width: 100%;
+            height: auto;
+          }
+        
+          .galeria h3 {
+            font-size: 16px;
+          }
+        
+          .galeria p {
+            font-size: 14px;
+          }
+        
+        }

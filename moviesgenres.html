@@ -3,16 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FilmVerse</title>
+  <title>Géneros de Películas</title> 
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-
   <header>
     <div class="header-left">
       <img src="./img/logito.png" alt="Logo FilmVerse">
     </div>
-
     <nav class="header-center">
       <ul>
         <li><a href="index.html">Inicio</a></li>
@@ -21,41 +19,18 @@
         <li><a href="login.html">Login</a></li> 
       </ul>
     </nav>
-
     <div class="buscador">
-      <form action="search-results.html" method="GET">
-        <input type="text" name="query" placeholder="Buscar..." required>
-        <div class="radio-buttons">
-          <label>
-            <input type="radio" name="tipo" value="movie" checked> Películas
-          </label>
-          <label>
-            <input type="radio" name="tipo" value="tv"> Series
-          </label>
-        </div>
+      <form action="search-results.html" method="GET"> 
+        <input type="text" name="user" placeholder="Buscar..."> 
         <button type="submit">Buscar</button>
       </form>
     </div>
   </header>
 
-  <main>
+  <main class="moviesgenre">
     <section>
-      <h2>Películas Populares</h2>
-      <ul class="galeria" id="peliculas-populares">
-       
-      </ul>
-    </section>
-
-    <section>
-      <h2>Series Populares</h2>
-      <ul class="galeria" id="series-populares">
-       
-      </ul>
-    </section>
-
-    <section>
-      <h2>Películas Más Valoradas</h2>
-      <ul class="galeria" id="peliculas-mejor-valoradas">
+      <h2>Géneros de Películas</h2>
+      <ul id="lista-generos-peliculas">
         
       </ul>
     </section>
@@ -65,6 +40,6 @@
     <p>Desarrollado por: Nicolas Aboso, Ramiro Calello y Francisco Fraquelli</p>
   </footer>
 
-  <script src="./js/index.js"></script> 
+  <script src="./js/generos.js"></script> 
 </body>
 </html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resultados de Búsqueda</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body class="pagina-busqueda">
+  <header>
+    <div class="header-left">
+      <img src="./img/logito.png" alt="Logo FilmVerse">
+    </div>
+
+    <nav class="header-center">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="moviesgenres.html">Géneros de Películas</a></li>
+        <li><a href="seriesgenres.html">Géneros de Series</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+
+    <div class="buscador">
+      <form action="search-results.html" method="GET"> 
+        <input type="text" name="user" placeholder="Buscar..."> 
+        <button type="submit">Buscar</button>
+      </form>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2 id="titulo-busqueda">Resultados de búsqueda</h2>
+
+      <div id="spinner" style="text-align:center; display:none;">
+        <p>Cargando resultados...</p>
+      </div>
+
+      <ul class="galeria" id="resultados">
+ 
+      </ul>
+
+      <div id="sin-resultados" style="text-align:center; display:none;">
+        <p>No se encontraron resultados para tu búsqueda.</p>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>Desarrollado por: Nicolas Aboso, Ramiro Calello y Francisco Fraquelli</p>
+  </footer>
+
+  <script src="./js/search-results.js"></script> 
+</body>
+</html>

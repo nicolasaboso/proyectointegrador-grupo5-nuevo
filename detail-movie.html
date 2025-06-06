@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle Película</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-left">
+      <img src="./img/logito.png" alt="Logo FilmVerse">
+    </div>
+
+    <nav class="header-center">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="moviesgenres.html">Géneros de Películas</a></li>
+        <li><a href="seriesgenres.html">Géneros de Series</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+
+    <div class="buscador">
+      <form action="search-results.html" method="GET">
+        <input type="text" name="query" placeholder="Buscar..." required> 
+        <div class="radio-buttons">
+          <label><input type="radio" name="tipo" value="movie" checked> Películas</label>
+          <label><input type="radio" name="tipo" value="tv"> Series</label>
+        </div>
+        <button type="submit">Buscar</button>
+      </form>
+    </div>
+  </header>
+
+  <main>
+    <section class="detalle-pelicula">
+      
+      <div class="detalle-img">
+        <img id="poster" src="" alt="Poster de la película">
+      </div>
+      
+      <div class="detalle-info">
+        <h1 id="titulo"></h1>
+        <div class="meta">
+          <p><strong>Calificación:</strong> <span id="calificacion"></span></p>
+          <p><strong>Duración:</strong> <span id="duracion"></span></p>
+          <p><strong>Fecha de estreno:</strong> <span id="fecha"></span></p>
+        </div>
+
+        <p class="descripcion" id="descripcion"></p>
+
+        <p><strong>Género:</strong> <span id="generos"></span></p>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>Desarrollado por: Nicolas Aboso, Ramiro Calello y Francisco Fraquelli</p>
+  </footer>
+
+  <script src="./js/detail-movie.js"></script> <!-- LINK AL JS -->
+</body>
+</html>
